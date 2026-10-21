@@ -8,21 +8,41 @@ The screenshots below show the customer experience and the same order progressin
 
 ### Customer experience
 
-| Restaurant discovery | Restaurant menu | Role selection | Payment success |
-| --- | --- | --- | --- |
-| ![Cravely customer home and restaurant discovery](docs/screenshots/customer-home.png) | ![Restaurant page and menu](docs/screenshots/restaurant-menu.png) | ![Customer, seller, and rider role selection](docs/screenshots/role-selection.png) | ![Successful test payment and order confirmation](docs/screenshots/order-payment-success.png) |
+#### Restaurant discovery
+
+![Cravely customer home and restaurant discovery](docs/screenshots/customer-home.png)
+
+#### Restaurant menu
+
+![Restaurant page and menu](docs/screenshots/restaurant-menu.png)
+
+#### Role selection
+
+![Customer, seller, and rider role selection](docs/screenshots/role-selection.png)
+
+#### Payment success
+
+![Successful test payment and order confirmation](docs/screenshots/order-payment-success.png)
 
 ### Multi-window order flow
 
-Each capture shows the customer, restaurant, and two rider windows together as the order moves through the workflow.
+Each full-width capture shows the customer, restaurant, and two rider windows together as the order moves through the workflow.
 
-| Order accepted | Restaurant preparing the order |
-| --- | --- |
-| ![Customer and restaurant order accepted with two rider windows](docs/screenshots/order-accepted-multiwindow.png) | ![Customer and restaurant preparing order with two rider windows](docs/screenshots/order-preparing-multiwindow.png) |
+#### Order accepted
 
-| Rider matching | Order history across the customer, restaurant, and rider windows |
-| --- | --- |
-| ![Rider matching across four Cravely windows](docs/screenshots/rider-matching-multiwindow.png) | ![Order history with restaurant and two rider windows](docs/screenshots/order-history-multiwindow.png) |
+![Customer and restaurant order accepted with two rider windows](docs/screenshots/order-accepted-multiwindow.png)
+
+#### Restaurant preparing the order
+
+![Customer and restaurant preparing order with two rider windows](docs/screenshots/order-preparing-multiwindow.png)
+
+#### Rider matching
+
+![Rider matching across four Cravely windows](docs/screenshots/rider-matching-multiwindow.png)
+
+#### Order history
+
+![Order history with restaurant and two rider windows](docs/screenshots/order-history-multiwindow.png)
 
 ## ✨ Features
 
