@@ -461,7 +461,7 @@ export const assignRiderToOrder = TryCatch(async (req, res) => {
     });
   }
 
-  const { orderId, riderId, riderName, riderPhone } = req.body;
+  const { orderId, riderId, riderName, riderImage, riderPhone } = req.body;
 
   const orderAvailable = await Order.findOne({
     riderId: String(riderId),
@@ -494,7 +494,13 @@ export const assignRiderToOrder = TryCatch(async (req, res) => {
     { _id: orderId, riderId: null },
     {
       riderId: String(riderId),
-      riderName,
+      riderName:
+        riderName && !riderName.startsWith("http")
+          ? riderName
+          : "Delivery Partner",
+      riderImage:
+        riderImage ||
+        (riderName && riderName.startsWith("http") ? riderName : null),
       riderPhone,
       status: "rider_assigned",
     },

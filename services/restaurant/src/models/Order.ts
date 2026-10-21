@@ -7,6 +7,7 @@ export interface IOrder extends Document {
   riderId?: string | null;
   riderPhone: number | null;
   riderName: string | null;
+  riderImage?: string | null;
   distance: number;
   riderAmount: number;
 
@@ -72,6 +73,10 @@ const OrderSchema = new Schema<IOrder>(
       default: null,
     },
     riderName: {
+      type: String,
+      default: null,
+    },
+    riderImage: {
       type: String,
       default: null,
     },

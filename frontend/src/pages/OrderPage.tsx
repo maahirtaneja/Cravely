@@ -125,6 +125,14 @@ const OrderPage = () => {
     return "bg-amber-50 text-amber-800 border-amber-200";
   };
 
+  const isUrl = (str?: string | null) =>
+    Boolean(str && (str.startsWith("http://") || str.startsWith("https://")));
+  const riderPhoto =
+    order.riderImage || (isUrl(order.riderName) ? order.riderName : null);
+  const displayName = isUrl(order.riderName)
+    ? "Delivery Partner"
+    : order.riderName || "Delivery Partner";
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] px-4 py-8">
       <div className="mx-auto max-w-3xl space-y-5">
@@ -192,17 +200,25 @@ const OrderPage = () => {
         )}
 
         {/* Assigned Rider Info if available */}
-        {order.riderName && (
+        {(order.riderName || order.riderId || order.riderImage) && (
           <div className="rounded-3xl bg-white border border-slate-100 shadow-sm p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center">
-                🛵
-              </div>
+              {riderPhoto ? (
+                <img
+                  src={riderPhoto}
+                  alt="Delivery Partner"
+                  className="h-11 w-11 rounded-2xl object-cover border border-slate-100 shadow-2xs"
+                />
+              ) : (
+                <div className="h-11 w-11 rounded-2xl bg-emerald-50 text-emerald-600 font-bold flex items-center justify-center text-lg">
+                  🛵
+                </div>
+              )}
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
                   Assigned Delivery Partner
                 </p>
-                <p className="font-bold text-sm text-[#0D2240]">{order.riderName}</p>
+                <p className="font-bold text-sm text-[#0D2240]">{displayName}</p>
               </div>
             </div>
             {order.riderPhone && (
