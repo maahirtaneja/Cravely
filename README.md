@@ -4,7 +4,25 @@ Cravely is a food ordering and delivery platform with separate experiences for c
 
 ## 📸 Screenshots
 
-The main demo screenshot can show the live order flow across four browser windows at once: one customer, one restaurant seller, and two riders. Save the capture to `docs/screenshots/` as `multi-window-order-flow.png`. A second screenshot is optional and can show the customer order tracking view in more detail.
+The screenshots below show the customer experience and the same order progressing across a customer window, restaurant seller window, and two rider windows. Browser address bars and desktop chrome have been cropped from the captures.
+
+### Customer experience
+
+| Restaurant discovery | Restaurant menu | Role selection | Payment success |
+| --- | --- | --- | --- |
+| ![Cravely customer home and restaurant discovery](docs/screenshots/customer-home.png) | ![Restaurant page and menu](docs/screenshots/restaurant-menu.png) | ![Customer, seller, and rider role selection](docs/screenshots/role-selection.png) | ![Successful test payment and order confirmation](docs/screenshots/order-payment-success.png) |
+
+### Multi-window order flow
+
+Each capture shows the customer, restaurant, and two rider windows together as the order moves through the workflow.
+
+| Order accepted | Restaurant preparing the order |
+| --- | --- |
+| ![Customer and restaurant order accepted with two rider windows](docs/screenshots/order-accepted-multiwindow.png) | ![Customer and restaurant preparing order with two rider windows](docs/screenshots/order-preparing-multiwindow.png) |
+
+| Rider matching | Order history across the customer, restaurant, and rider windows |
+| --- | --- |
+| ![Rider matching across four Cravely windows](docs/screenshots/rider-matching-multiwindow.png) | ![Order history with restaurant and two rider windows](docs/screenshots/order-history-multiwindow.png) |
 
 ## ✨ Features
 
@@ -201,23 +219,23 @@ npm run preview
 
 ## 🤝 Contributing
 
-Contributions are welcome. Fork the repository, create a focused branch, make your change, and open a pull request with a clear description.
+Contributions are welcome! If you'd like to:
+
+- Fix bugs 🐞
+- Add new features ✨
+- Improve UI/UX 🎨
+- Write tests 🧪
+
+Just fork this repo, make your changes, and open a Pull Request. Let's make it better together!
 
 ---
 
-© 2026 Cravely
+## 📧 Contact
 
-## Screenshot plan
+For any queries, feedback, or collaboration ideas:
 
-The core README visual can be a single desktop capture with four browser windows arranged so the order handoff is easy to follow:
+- 📬 Email: [maahirtaneja@gmail.com](mailto:maahirtaneja@gmail.com)
 
-1. **Customer window** — customer order page with the active order and its current status visible.
-2. **Restaurant window** — seller order queue showing the same order and its preparation/ready status.
-3. **Rider 1 window** — rider dashboard showing an available or accepted delivery.
-4. **Rider 2 window** — second rider dashboard showing the other rider's state (for example, available while Rider 1 has accepted the order).
+---
 
-Use the same test order across the relevant windows, and arrange the windows with enough space to read the role/page and order status. A concise title or small labels such as **Customer**, **Restaurant**, **Rider 1**, and **Rider 2** can make the layout immediately understandable. Avoid capturing passwords, tokens, personal addresses, phone numbers, or real payment details.
-
-**Required screenshot:** `docs/screenshots/multi-window-order-flow.png`
-
-**Optional second screenshot:** `docs/screenshots/customer-order-tracking.png` — a larger customer-focused view of the order status or map. These one or two screenshots are sufficient for the README; separate screenshots for every feature are not needed for this demo plan.
+© 2026 Maahir Taneja | Built with Node.js, Express, React, MongoDB, RabbitMQ, and Cloudinary.
