@@ -222,12 +222,21 @@ npm run preview
 
 ## 🚀 Deployment notes
 
-- `frontend/vercel.json` contains an SPA rewrite for Vercel hosting; it does not configure the backend services.
-- The frontend currently calls fixed `localhost` service addresses, so update those URLs before deploying the frontend.
-- Backend CORS currently permits only the local Vite origin; configure allowed origins for the deployed site.
-- Deploy each backend service with its own environment, private database and RabbitMQ connectivity, and reachable service URLs.
-- Configure HTTPS, payment provider webhooks/keys, Google OAuth authorized origins, and Cloudinary credentials for the production domains.
-- Do not expose MongoDB, RabbitMQ, JWT secrets, internal service keys, or payment secrets in frontend code.
+### Backend on an AWS EC2 instance
+
+The backend can be deployed to an EC2 Linux instance. For a small deployment, run the six Node.js services on one instance with Docker or a process manager such as PM2. The repository has an individual Dockerfile in each service directory (`auth`, `restaurant`, `utils`, `rider`, `realtime`, and `admin`); build each image from its own service directory. For higher availability or independent scaling, the services can instead run as separate ECS services.
+
+1. Create an EC2 instance, install Node.js or Docker, and configure a domain name and HTTPS. Use an Application Load Balancer or Nginx as the public entry point.
+2. Deploy the six services and set each service's environment variables from the local setup section. Use the production MongoDB connection string and RabbitMQ URL. Keep both dependencies private and reachable only from the backend.
+3. Set service-to-service URLs such as `RESTAURANT_SERVICE`, `RIDER_SERVICE`, `UTILS_SERVICE`, and `REALTIME_SERVICE` to private service addresses or internal reverse-proxy routes. Configure the same `JWT_SEC` and `INTERNAL_SERVICE_KEY` where required.
+4. Expose HTTPS endpoints for the frontend's auth, restaurant, utils, rider, admin, and realtime APIs. The realtime endpoint must support WebSocket upgrades for Socket.IO. Keep the Node service ports private; allow public traffic only through the load balancer or reverse proxy.
+5. Update the service URLs currently hard-coded in `frontend/src/main.tsx` to the deployed HTTPS endpoints before building the frontend. Change each backend's CORS origin from `http://localhost:5173` to the deployed frontend domain.
+
+### Frontend hosting
+
+`frontend/vercel.json` provides an SPA rewrite for Vercel. The frontend can also be hosted as static files on another provider. Build it with `npm run build` and deploy `frontend/dist`. Vite embeds configuration at build time, so the frontend must be rebuilt after changing its API URLs.
+
+Configure Google OAuth authorized origins, payment provider keys/webhooks, and Cloudinary settings for the production domains. Never expose MongoDB or RabbitMQ to the public internet, and do not put JWT secrets, internal service keys, or payment secrets in frontend code.
 
 ## 🔐 Security notes
 
